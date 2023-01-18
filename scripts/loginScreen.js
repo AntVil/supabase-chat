@@ -6,6 +6,12 @@ async function signUp(e){
 
     let emailElement = e.srcElement[0];
     let passwordElement = e.srcElement[1];
+    let passwordRepeatElement = e.srcElement[1];
+
+    if(passwordElement.value !== passwordRepeatElement.value){
+        passwordElement.classList.add("fieldInvalid");
+        passwordRepeatElement.classList.add("fieldInvalid");
+    }
 
     let data;
     let error;

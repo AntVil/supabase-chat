@@ -12,3 +12,5 @@
 - [ ] lazy load messages
 - [ ] message coloring
 - [x] auto scroll
+- [ ] mobile keyboard bug
+- [ ] verify password signup
