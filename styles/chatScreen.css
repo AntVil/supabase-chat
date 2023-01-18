@@ -34,7 +34,13 @@ main>div>label{
     cursor: pointer;
 }
 
-main>div>label:focus, main>div>label:active, main>div>label:hover{
+@media (hover: hover){
+    main>div>label:hover{
+        background-color: var(--theme-color-3);
+    }
+}
+
+main>div>label:focus, main>div>label:active{
     background-color: var(--theme-color-3);
 }
 
@@ -71,6 +77,41 @@ main>article>section>p>code{
 
 main>article>section>time{
     float: right;
+}
+
+main>article+button{
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    width: 60px;
+    height: 40px;
+    border-radius: 15px 0 0 15px;
+    border: none;
+    background-color: var(--theme-color-1);
+    cursor: pointer;
+    outline: none;
+}
+
+main>article+button::after{
+    content: "";
+    display: block;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke='%23000' fill='%230000' d='M 4 8L12 16L20 8'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke='%23000' fill='%230000' d='M 4 8L12 16L20 8'/%3E%3C/svg%3E");
+    background-color: var(--font-color);
+}
+
+@media (hover: hover){
+    main>article+button:hover::after{
+        background-color: var(--theme-color-3);
+    }
+}
+
+main>article+button:focus, main>article+button:active{
+    background-color: var(--theme-color-3);
 }
 
 main>form{
@@ -112,11 +153,17 @@ main>form>button{
     border-radius: 50%;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
-main>form>button:focus, main>form>button:active, main>form>button:hover{
+@media (hover: hover){
+    main>form>button:hover{
+        background-color: var(--theme-color-3);
+    }
+}
+
+main>form>button:focus, main>form>button:active{
     background-color: var(--theme-color-3);
-    cursor: pointer;
 }
 
 main>form>button::after{

@@ -11,3 +11,4 @@
 - [ ] limit loaded messages
 - [ ] lazy load messages
 - [ ] message coloring
+- [x] auto scroll

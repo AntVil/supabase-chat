@@ -1,9 +1,13 @@
 let profiles;
 let chatElement;
 let socket;
+let shouldScrollDown = false;
 
 async function setupChat(){
     chatElement = document.getElementById("chat");
+    chatElement.onscroll = (e) => {
+        shouldScrollDown = Math.abs((chatElement.scrollTop + chatElement.getBoundingClientRect().height) - chatElement.scrollHeight) < 10;
+    }
 
     setupChatSocket();
     setupChatHistory();
@@ -25,7 +29,7 @@ async function setupChatHistory(){
         )
     }
 
-    chatElement.scrollTop = chatElement.scrollHeight
+    scrollChatDown();
 }
 
 async function sendMessage(e){
@@ -49,6 +53,10 @@ async function setupChatSocket(){
         chatElement.appendChild(
             getMessageElement(message, user_id, date)
         );
+
+        if(shouldScrollDown){
+            scrollChatDown();
+        }
     }).subscribe()
 }
 
@@ -67,10 +75,10 @@ function getMessageElement(message, user_id, date){
     .replaceAll(/&/ig, "&amp;") // clean up
     .replaceAll(/</ig, "&lt;")
     .replaceAll(/>/ig, "&gt;")
-    .replaceAll(/\*\*([^*]+)\*\*/ig, "<b>$1</b>") // normal tags
-    .replaceAll(/\*([^*]+)\*/ig, "<i>$1</i>")
-    .replaceAll(/~([^~]+)~/ig, "<del>$1</del>")
-    .replaceAll(/`([^`]+)`/ig, "<code>$1</code>");
+    .replaceAll(/ \*\*([^*\n]+)\*\* /ig, " <b>$1</b> ") // normal tags
+    .replaceAll(/ \*([^*\n]+)\* /ig, " <i>$1</i> ")
+    .replaceAll(/ ~([^~\n]+)~ /ig, " <del>$1</del> ")
+    .replaceAll(/ `([^`\n]+)` /ig, " <code>$1</code> ");
 
     messageElement.appendChild(messageContent);
     messageElement.appendChild(messageTime);
@@ -82,4 +90,9 @@ function clearChat(){
     client.removeAllChannels();
     chatElement.innerHTML = "";
     console.log(chatElement)
+}
+
+function scrollChatDown(){
+    chatElement.scrollTop = chatElement.scrollHeight;
+    shouldScrollDown = true;
 }

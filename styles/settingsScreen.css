@@ -30,6 +30,12 @@ footer>div>*:last-child{
     background-color: var(--theme-color-0);
 }
 
-footer>div>*:last-child:focus, footer>div>*:last-child:active, footer>div>*:last-child:hover{
+@media (hover: hover){
+    footer>div>*:last-child:hover{
+        background-color: var(--theme-color-3);
+    }
+}
+
+footer>div>*:last-child:focus, footer>div>*:last-child:active{
     background-color: var(--theme-color-3);
 }

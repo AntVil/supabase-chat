@@ -47,7 +47,13 @@ header>form>button{
     background-color: var(--theme-color-0);
 }
 
-header>form>button:focus, header>form>button:active, header>form>button:hover{
+@media (hover: hover){
+    header>form>button:hover{
+        background-color: var(--theme-color-3);
+    }
+}
+
+header>form>button:focus, header>form>button:active{
     background-color: var(--theme-color-3);
 }
 
@@ -59,6 +65,12 @@ header>form label{
     filter: grayscale(100%);
 }
 
-header>form label:focus, header>form label:active, header>form label:hover{
+@media (hover: hover){
+    header>form label:hover{
+        filter: none;
+    }
+}
+
+header>form label:focus, header>form label:active{
     filter: none;
 }
