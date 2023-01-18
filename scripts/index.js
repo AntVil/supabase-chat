@@ -1,7 +1,11 @@
 let client;
-let user;
+
 
 window.onload = async () => {
+    if("serviceWorker" in navigator){
+        navigator.serviceWorker.register("./serviceWorker.js");
+    }
+
     document.getElementsByName("theme-color")[0].content = getComputedStyle(document.body).getPropertyValue("--theme-color-1")
 
     window.addEventListener("keydown", e => {
@@ -30,10 +34,7 @@ window.onload = async () => {
 }
 
 async function createProfile(){
-    const { data, error } = await client.from("profiles").insert([{
-        user_id: user.id,
-        name: "authenticated user"
-    }]);
+    const { data, error } = await client.from("profiles").insert([{name: "authenticated user"}]);
     console.log(data, error);
 }
 
@@ -47,10 +48,5 @@ async function updateProfile(){
 
 async function getProfiles(){
     const { data, error } = await client.from("profiles").select()
-    console.log(data, error);
-}
-
-async function getOwnProfile(){
-    const { data, error } = await client.from("profiles").select().eq("user_id", user.id);
     console.log(data, error);
 }

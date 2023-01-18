@@ -1,14 +1,17 @@
+let profiles;
 let chatElement;
+let socket;
 
 async function setupChat(){
-    subscribe();
-
     chatElement = document.getElementById("chat");
 
-    getMessages();
+    setupChatSocket();
+    setupChatHistory();
+
+    document.getElementById("chatScreen").checked = true;
 }
 
-async function getMessages(){
+async function setupChatHistory(){
     const { data, error } = await client.from("messages").select().order("created_at", { ascending: false });
     
     for(let payload of data){
@@ -30,17 +33,14 @@ async function sendMessage(e){
     
     let messageElement = e.srcElement[0];
     
-    const { data, error } = await client.from("messages").insert([{
-        user_id: user.id,
+    await client.from("messages").insert([{
         content: messageElement.value
     }]);
 
     messageElement.value = "";
-
-    console.log(data, error);
 }
 
-async function subscribe(){
+async function setupChatSocket(){
     client.channel("public:messages").on("postgres_changes", { event: "INSERT", schema: "public", table: "messages" }, payload => {
         let message = payload.new.content;
         let date = new Date(payload.new.created_at);
@@ -76,4 +76,10 @@ function getMessageElement(message, user_id, date){
     messageElement.appendChild(messageTime);
 
     return messageElement;
+}
+
+function clearChat(){
+    client.removeAllChannels();
+    chatElement.innerHTML = "";
+    console.log(chatElement)
 }

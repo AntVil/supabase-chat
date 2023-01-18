@@ -69,12 +69,6 @@ main>article>section>p>code{
     font-family: 'Courier New', Courier, monospace;
 }
 
-main>article>section>p>.katex,
-main>article>section>p>.katex *{
-    overflow: initial;
-    font-family: initial;
-}
-
 main>article>section>time{
     float: right;
 }

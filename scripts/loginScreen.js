@@ -1,9 +1,11 @@
+let user;
+let profile;
+
 async function signUp(e){
     e.preventDefault();
 
-    let usernameElement = e.srcElement[0];
-    let emailElement = e.srcElement[1];
-    let passwordElement = e.srcElement[2];
+    let emailElement = e.srcElement[0];
+    let passwordElement = e.srcElement[1];
 
     let data;
     let error;
@@ -15,22 +17,17 @@ async function signUp(e){
     }catch{
         error = true;
     }
-    user = data.user;
 
     if(error === null || error === undefined || error === false){
         emailElement.classList.remove("fieldInvalid");
         passwordElement.classList.remove("fieldInvalid");
         emailElement.value = "";
         passwordElement.value = "";
-        user = data.user;
-        setupChat();
-        document.getElementById("chatScreen").checked = true;
+        document.getElementById("verifyEmail").checked = true;
     }else{
         emailElement.classList.add("fieldInvalid");
         passwordElement.classList.add("fieldInvalid");
     }
-
-    document.getElementById("chatScreen").checked = true;
 }
 
 async function signIn(e){
@@ -53,11 +50,10 @@ async function signIn(e){
     if(error === null || error === undefined || error === false){
         emailElement.classList.remove("fieldInvalid");
         passwordElement.classList.remove("fieldInvalid");
+        user = data.user;
+        setupProfile();
         emailElement.value = "";
         passwordElement.value = "";
-        user = data.user;
-        setupChat();
-        document.getElementById("chatScreen").checked = true;
     }else{
         emailElement.classList.add("fieldInvalid");
         passwordElement.classList.add("fieldInvalid");
@@ -65,6 +61,37 @@ async function signIn(e){
 }
 
 async function signOut(){
-    await client.auth.signOut();
+    document.getElementById("username").innerText = "Username";
+    clearChat();
+    client.auth.signOut();
     user = undefined;
+}
+
+async function setupProfile(){
+    const { data, error } = await client.from("profiles").select().eq("user_id", user.id);
+
+    if(data.length === 1){
+        document.getElementById("username").innerText = data[0].name;
+        setupChat();
+    }else{
+        document.getElementById("profileCreation").checked = true;
+    }
+}
+
+async function createProfile(e){
+    e.preventDefault();
+
+    let usernameElement = e.srcElement[0];
+    let username = usernameElement.value.trim();
+    
+    if(username.length === 0){
+        usernameElement.classList.add("fieldInvalid");
+        return;
+    }else{
+        await client.from("profiles").insert([{name: username}]);
+        document.getElementById("username").innerText = username;
+        setupChat();
+        usernameElement.value = "";
+        usernameElement.classList.remove("fieldInvalid");
+    }
 }
