@@ -1,0 +1,64 @@
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header>form{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 100%;
+    gap: 5px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: var(--theme-color-1);
+    text-align: center;
+}
+
+header>form>h1{
+    font-size: larger;
+    font-weight: normal;
+}
+
+header>form>input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid var(--theme-color-2);
+    border-radius: 3px;
+    outline: none;
+    background-color: var(--theme-color-0);
+}
+
+header>form>input:focus, header>form>input:active{
+    border-color: var(--theme-color-3);
+}
+
+header>form>input.fieldInvalid{
+    border-color: #A00;
+}
+
+header>form>button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--theme-color-0);
+}
+
+header>form>button:focus, header>form>button:active, header>form>button:hover{
+    background-color: var(--theme-color-3);
+}
+
+header>form label{
+    color: var(--theme-color-3);
+    outline: none;
+    text-decoration: underline;
+    cursor: pointer;
+    filter: grayscale(100%);
+}
+
+header>form label:focus, header>form label:active, header>form label:hover{
+    filter: none;
+}

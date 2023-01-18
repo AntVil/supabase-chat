@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "name": "supabase-chat",
+  "version": "1.0.0",
+  "description": "Basic Chat Progressive Web App (PWA) using supabase",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AntVil",
+  "license": "MIT"
+}

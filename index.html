@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="EN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, viewport-fit=cover, minimum-scale=1, maximum-scale=1">
+        <meta name=description content="Basic Chat Progressive Web App (PWA) using supabase">
+
+        <title>supabase-chat</title>
+        <link rel="manifest" href="./manifest.json">
+        <meta name="theme-color" content="#EEEEEE" />
+        <link rel="icon" type="image/svg" href="./images/icon.svg">
+        <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+        <link href="./images/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+        <link href="./images/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+        <link href="./images/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+        <link href="./images/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+        <link href="./images/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+        <link href="./images/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+        <link href="./images/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+        <link href="./images/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+        <link href="./images/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+        <link href="./images/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+
+        <link rel="stylesheet" href="./styles/themes.css">
+        <link rel="stylesheet" href="./styles/index.css">
+        <link rel="stylesheet" href="./styles/loginScreen.css">
+        <link rel="stylesheet" href="./styles/chatScreen.css">
+        <link rel="stylesheet" href="./styles/settingsScreen.css">
+
+        <script defer src="./scripts/index.js"></script>
+        <script defer src="./scripts/loginScreen.js"></script>
+        <script defer src="./scripts/chatScreen.js"></script>
+        <script defer src="./scripts/settingsScreen.js"></script>
+
+        <!-- supabase -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </head>
+    <body>
+        <input type="radio" id="loginScreen" name="screen" autocomplete="off" checked />
+        <header>
+            <input id="signIn" type="radio" name="loginScreen" autocomplete="off" checked />
+            <form onsubmit="signIn(event)">
+                <h1>Login</h1>
+                <input type="email" placeholder="email" required />
+                <input type="password" placeholder="password" required />
+                <button type="submit">sign in</button>
+                <p>Don't have an account? <label for="signUp" tabindex="0">Sign up</label></p>
+            </form>
+
+            <input id="signUp" type="radio" name="loginScreen" autocomplete="off" />
+            <form onsubmit="signUp(event)">
+                <h1>Create Account</h1>
+                <input type="text" placeholder="username" pattern="[^\s]+" required />
+                <input type="email" placeholder="email" required />
+                <input type="password" placeholder="password" required />
+                <button type="submit">sign up</button>
+                <p>Have an account? <label for="signIn" tabindex="0">Sign in</label></p>
+            </form>
+        </header>
+
+        <input type="radio" id="chatScreen" name="screen" autocomplete="off" />
+        <main>
+            <div>
+                <span id="username">User 1</span>
+                <label for="settingsScreen" tabindex="0"></label>
+            </div>
+
+            <article id="chat"></article>
+
+            <form onsubmit="sendMessage(event)">
+                <input placeholder="message" />
+                <button type="submit"></button>
+            </form>
+        </main>
+
+        <input type="radio" id="settingsScreen" name="screen" autocomplete="off" />
+        <footer>
+            <label for="loginScreen">logout</label>
+        </footer>
+    </body>
+</html>
