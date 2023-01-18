@@ -21,7 +21,7 @@ footer>div>h1{
     font-weight: normal;
 }
 
-footer>div>*:last-child{
+footer>div>label{
     color: var(--font-color);
     outline: none;
     border: none;
@@ -31,11 +31,11 @@ footer>div>*:last-child{
 }
 
 @media (hover: hover){
-    footer>div>*:last-child:hover{
+    footer>div>label:hover{
         background-color: var(--theme-color-3);
     }
 }
 
-footer>div>*:last-child:focus, footer>div>*:last-child:active{
+footer>div>label:focus, footer>div>label:active{
     background-color: var(--theme-color-3);
 }
