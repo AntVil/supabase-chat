@@ -4,7 +4,7 @@ footer{
     align-items: center;
 }
 
-footer>div{
+footer>form{
     display: flex;
     flex-direction: column;
     max-width: 300px;
@@ -16,12 +16,30 @@ footer>div{
     text-align: center;
 }
 
-footer>div>h1{
+footer>form>h1{
     font-size: larger;
     font-weight: normal;
 }
 
-footer>div>label{
+footer>form>input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid var(--theme-color-2);
+    border-radius: 3px;
+    outline: none;
+    background-color: var(--theme-color-0);
+}
+
+footer>form>input:focus, footer>form>input:active{
+    border-color: var(--theme-color-3);
+}
+
+footer>form>input.fieldInvalid{
+    border-color: #A00;
+}
+
+footer>form>label, footer>form>button{
     color: var(--font-color);
     outline: none;
     border: none;
@@ -31,11 +49,38 @@ footer>div>label{
 }
 
 @media (hover: hover){
-    footer>div>label:hover{
+    footer>form>label:hover, footer>form>button:hover{
         background-color: var(--theme-color-3);
     }
 }
 
-footer>div>label:focus, footer>div>label:active{
+footer>form>label:focus, footer>form>label:active, footer>form>button:focus, footer>form>button:active{
+    background-color: var(--theme-color-3);
+}
+
+footer>form>select{
+    appearance: none;
+    width: 100%;
+    height: 23px;
+    padding-left: 5px;
+    border: 0px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    background-color: var(--theme-color-0);
+    cursor: pointer;
+}
+
+footer>form>select>option{
+    color: inherit;
+    background-color: var(--theme-color-3);
+}
+
+@media (hover: hover) {
+    footer>form>select:hover{
+        background-color: var(--theme-color-3);
+    }
+}
+
+footer>form>select:focus, footer>form>select:active{
     background-color: var(--theme-color-3);
 }

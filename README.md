@@ -1,16 +1,15 @@
-- [ ] respond with no internet
-- [ ] user settings
+- [x] respond with no internet
+- [x] user settings
 - [x] installable service worker
 - [x] get user name
-- [ ] desktop view (margin left right)
 - [x] create profile
-- [ ] update profile
-- [ ] username color
+- [x] update profile
+- [x] username color
 - [x] logout remove all data
 - [x] manifest start url
 - [ ] limit loaded messages
 - [ ] lazy load messages
-- [ ] message coloring
+- [x] message coloring
 - [x] auto scroll
-- [ ] mobile keyboard bug
-- [ ] verify password signup
+- [x] mobile keyboard bug
+- [x] verify password signup

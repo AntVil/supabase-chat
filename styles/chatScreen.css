@@ -12,6 +12,7 @@ main{
     grid-template-rows: var(--chat-screen-top-bar) 1fr auto;
 }
 
+/* top bar */
 main>div{
     display: grid;
     justify-content: center;
@@ -44,6 +45,7 @@ main>div>label:focus, main>div>label:active{
     background-color: var(--theme-color-3);
 }
 
+/* chat */
 main>article{
     padding: 0 10px;
     overflow-y: scroll;
@@ -52,7 +54,7 @@ main>article{
 main>article>section{
     width: max-content;
     max-width: 60%;
-    background-color: var(--theme-color-2);
+    background-color: var(--theme-color-1);
     border-radius: 15px 15px 15px 0;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -65,6 +67,7 @@ main>article>section.ownMessage{
     margin-left: auto;
     margin-right: 10px;
     border-radius: 15px 15px 0 15px;
+    background-color: var(--theme-color-2);
 }
 
 main>article>section>p{
@@ -117,6 +120,7 @@ main>article+button:focus::after, main>article+button:active::after{
     background-color: var(--theme-color-3);
 }
 
+/* bottom bar */
 main>form{
     display: grid;
     justify-content: center;
@@ -137,6 +141,7 @@ main>form:focus-within{
 
 main>form>input{
     width: 100%;
+    height: var(--chat-screen-send-button-size);
     padding: 5px;
     border-radius: 15px;
     outline: none;

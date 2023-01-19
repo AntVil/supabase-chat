@@ -38,7 +38,7 @@
         <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     </head>
     <body>
-        <input type="radio" id="loginScreen" name="screen" autocomplete="off" checked />
+        <input id="loginScreen" type="radio" name="screen" autocomplete="off" checked />
         <header>
             <input id="signIn" type="radio" name="loginScreen" autocomplete="off" checked />
             <form onsubmit="signIn(event)">
@@ -73,7 +73,7 @@
             </form>
         </header>
 
-        <input type="radio" id="chatScreen" name="screen" autocomplete="off" />
+        <input id="chatScreen" type="radio" name="screen" autocomplete="off" />
         <main>
             <div>
                 <span id="username">Username</span>
@@ -89,13 +89,59 @@
             </form>
         </main>
 
-        <input type="radio" id="settingsScreen" name="screen" autocomplete="off" />
+        <input id="settingsScreen" type="radio" name="screen" autocomplete="off" />
         <footer>
-            <div>
+            <input id="settingsHub" type="radio" name="settingsScreen" autocomplete="off" checked />
+            <form>
                 <h1>Settings</h1>
+                <label for="changeUsername" onclick="initializeChangeUsername()" tabindex="0">change username</label>
+                <label for="changeTheme" tabindex="0">change theme</label>
+                <span></span>
                 <label for="chatScreen" tabindex="0">return to chat</label>
-                <label onclick="signOut()" for="loginScreen" tabindex="0">logout</label>
-            </div>
+                <label for="loginScreen" onclick="signOut()" tabindex="0">logout</label>
+            </form>
+
+            <input id="changeUsername" type="radio" name="settingsScreen" autocomplete="off" />
+            <form onsubmit="updateUsername(event)">
+                <h1>Change Username</h1>
+                <input type="text" placeholder="username" minlength="1" maxlength="40" />
+                <span></span>
+                <label for="settingsHub" tabindex="0">cancel</label>
+                <button type="submit">change username</button>
+            </form>
+
+            <input id="changeTheme" type="radio" name="settingsScreen" autocomplete="off" />
+            <form onsubmit="updateTheme(event)">
+                <h1>Change Theme</h1>
+                <select onchange="updateThemeLocally(this.value)">
+                    <option value="system" selected>System</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="cyberpunk">Cyberpunk</option>
+                    <option value="tokioNight">Tokio Night</option>
+                    <option value="shadesOfPurple">Shades of Purple</option>
+                    <option value="zeonica">Zeonica</option>
+                    <option value="hipster">Hipster</option>
+                    <option value="wildberry">Wildberry</option>
+                    <option value="qiita">Qiita</option>
+                    <option value="merkosGreen">Merko's Green</option>
+                    <option value="auroraX">Aurora X</option>
+                    <option value="atlanticNight">Atlantic Night</option>
+                    <option value="glassUI">Glass UI</option>
+                    <option value="slime">Slime</option>
+                    <option value="ariakeDark">Ariake Dark</option>
+                    <option value="snazzyLight">Snazzy Light</option>
+                    <option value="spacegray">Spacegray</option>
+                    <option value="celestial">Celestial</option>
+                    <option value="blueberryDark">Blueberry Dark</option>
+                    <option value="nord">Nord</option>
+                    <option value="palenight">Pale Night</option>
+                    <option value="nightOwl">Night Owl</option>
+                    <option value="dracula">Dracula</option>
+                </select>
+                <span></span>
+                <button>ok</button>
+            </form>
         </footer>
     </body>
 </html>

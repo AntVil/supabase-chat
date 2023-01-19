@@ -1,6 +1,5 @@
 let profilesDict;
 let chatElement;
-let socket;
 let shouldScrollDown = false;
 
 async function setupChat(){
@@ -101,10 +100,11 @@ async function getMessageElement(message, user_id, date){
     
     if(user_id === user.id){
         messageElement.classList.add("ownMessage");
+    }else{
+        let messageAuthor = document.createElement("p");
+        messageAuthor.innerText = await getUser(user_id);
+        messageElement.appendChild(messageAuthor);
     }
-
-    let messageAuthor = document.createElement("p");
-    messageAuthor.innerText = await getUser(user_id);
 
     let messageContent = document.createElement("p");
     messageContent.innerHTML = message
@@ -119,7 +119,7 @@ async function getMessageElement(message, user_id, date){
     let messageTime = document.createElement("time");
     messageTime.innerText = date.toLocaleTimeString();
 
-    messageElement.appendChild(messageAuthor);
+    
     messageElement.appendChild(messageContent);
     messageElement.appendChild(messageTime);
 

@@ -1,5 +1,4 @@
 let user;
-let profile;
 
 async function signUp(e){
     e.preventDefault();
@@ -66,17 +65,11 @@ async function signIn(e){
     }
 }
 
-async function signOut(){
-    document.getElementById("username").innerText = "Username";
-    clearChat();
-    client.auth.signOut();
-    user = undefined;
-}
-
 async function setupProfile(){
     const { data, error } = await client.from("profiles").select().eq("user_id", user.id);
 
     if(data.length === 1){
+        updateThemeLocally(data[0].theme);
         document.getElementById("username").innerText = data[0].name;
         setupChat();
     }else{
