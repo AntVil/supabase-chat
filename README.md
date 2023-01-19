@@ -1,15 +1,26 @@
-- [x] respond with no internet
-- [x] user settings
-- [x] installable service worker
-- [x] get user name
-- [x] create profile
-- [x] update profile
-- [x] username color
-- [x] logout remove all data
-- [x] manifest start url
-- [ ] limit loaded messages
-- [ ] lazy load messages
-- [x] message coloring
-- [x] auto scroll
-- [x] mobile keyboard bug
-- [x] verify password signup
+# supabase-chat
+
+### Setup
+Install the dependencies (`express` & `cypress`)
+```
+npm install
+```
+For testing add user credentials (will not be tracked by git)
+- Create the file `./cypress/fixtures/user_email.txt`
+- Create the file `./cypress/fixtures/user_password.txt`
+
+### Run
+Run the webserver
+```
+node index.js
+```
+
+### Test
+While running the webserver run the following command in another terminal
+```
+npx cypress open
+```
+Navigate to `E2E Testing`
+Choose a browser to test in
+Choose an E2E spec to run
+Under `./cypress/e2e` you can find the diffrent specs
