@@ -1,5 +1,7 @@
 # supabase-chat
 
+[https://antvil.github.io/supabase-chat](https://antvil.github.io/supabase-chat)
+
 ### Setup
 Install the dependencies (`express` & `cypress`)
 ```
