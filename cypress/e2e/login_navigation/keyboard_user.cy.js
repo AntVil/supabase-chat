@@ -1,13 +1,18 @@
 /// <reference types="cypress" />
 
+const USERNAME = `cypress-supabase-chat`;
+const EMAIL_DOMAIN = "1secmail.com";
+const EMAIL = `${USERNAME}@${EMAIL_DOMAIN}`;
+const PASSWORD = "12345678";
+
 describe("login navigation for keyboard user", () => {
     beforeEach(() => {
         cy.visit("/");
-    })
+    });
 
     it("starts at login", () => {
         cy.contains("Login", {matchCase: false}).should("be.visible");
-    })
+    });
     
     it("navigates back to sign in", () => {
         cy.get("body").tab().tab().tab().tab().type("{enter}");
@@ -15,30 +20,22 @@ describe("login navigation for keyboard user", () => {
 
         cy.get("body").tab().tab().tab().tab().tab().type("{enter}");
         cy.contains("Login", {matchCase: false}).should("be.visible");
-    })
+    });
 
     it("can sign in", () => {
-        cy.fixture("user_email").then(email => {
-            cy.get("body").tab().type(email);
-        })
+        cy.get("body").tab().type(EMAIL);
         
-        cy.fixture("user_password").then(password => {
-            cy.get("body").tab().tab().type(password);
-        })
+        cy.get("body").tab().tab().type(PASSWORD);
         
         cy.get("body").tab().tab().tab().type("{enter}");
 
         cy.get("[placeholder='message']", {timeout: 1000}).should("be.visible");
-    })
+    });
 
     it("can sign out", () => {
-        cy.fixture("user_email").then(email => {
-            cy.get("input:visible").first().type(email);
-        })
+        cy.get("input:visible").first().type(EMAIL);
         
-        cy.fixture("user_password").then(password => {
-            cy.get("input:visible").eq(1).type(password);
-        })
+        cy.get("input:visible").eq(1).type(PASSWORD);
         
         cy.get("body").tab().tab().tab().type("{enter}");
 
@@ -55,5 +52,5 @@ describe("login navigation for keyboard user", () => {
         tabs.type("{enter}");
 
         cy.contains("Login", {matchCase: false}).should("be.visible");
-    })
-})
+    });
+});
