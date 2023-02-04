@@ -7,9 +7,6 @@ Install the dependencies (`express` & `cypress`)
 ```
 npm install
 ```
-For testing add user credentials (will not be tracked by git)
-- Create the file `./cypress/fixtures/user_email.txt`
-- Create the file `./cypress/fixtures/user_password.txt`
 
 ### Run
 Run the webserver
@@ -31,5 +28,11 @@ Under `./cypress/e2e` you can find the diffrent specs
 - [x] add account deletion
 - [x] test account deletion
 - [x] test login fail
+- [ ] fix login navigation test
+- [ ] test logout
+- [ ] test change username
+- [ ] test account creation fail
 - [ ] test message sendable
 - [ ] test empty message not sendable
+- [ ] test chat message username & time
+- [ ] test chat message both perspectives
