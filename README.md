@@ -29,7 +29,7 @@ Under `./cypress/e2e` you can find the diffrent specs
 
 ### TODO
 - [x] add account deletion
-- [ ] test account deletion
-- [ ] test login fail
+- [x] test account deletion
+- [x] test login fail
 - [ ] test message sendable
 - [ ] test empty message not sendable

@@ -5,19 +5,19 @@ const EMAIL_DOMAIN = "1secmail.com";
 const EMAIL = `${USERNAME}@${EMAIL_DOMAIN}`;
 const PASSWORD = "12345678";
 
-describe("sign up for mouse user", () => {
+describe("sign up for keyboard user", () => {
     beforeEach(() => {
         cy.visit("/");
     });
 
     it("allows account creation", () => {
-        cy.contains(":visible", "sign up", {matchCase: false}).click();
+        cy.get("body").tab().tab().tab().tab().type("{enter}");
+        cy.contains("Create Account").should("be.visible");
 
-        cy.get("input:visible").first().type(EMAIL);
-        cy.get("input:visible").eq(1).type(PASSWORD);
-        cy.get("input:visible").eq(2).type(PASSWORD);
-
-        cy.contains(":visible", "sign up", {matchCase: false}).click();
+        cy.get("body").tab().type(EMAIL);
+        cy.get("body").tab().tab().type(PASSWORD);
+        cy.get("body").tab().tab().tab().type(PASSWORD);
+        cy.get("body").tab().tab().tab().tab().type("{enter}");
 
         // wait to ensure email was sent
         cy.wait(5000);
@@ -39,41 +39,41 @@ describe("sign up for mouse user", () => {
             }
         );
 
-        cy.contains(":visible", "sign in", {matchCase: false}).click();
+        cy.get("body").tab().type("{enter}");
     });
 
     it("allows profile creation", () => {
-        cy.get("input:visible").first().type(EMAIL);
-        cy.get("input:visible").eq(1).type(PASSWORD);
+        cy.get("body").tab().type(EMAIL);
+        cy.get("body").tab().tab().type(PASSWORD);
+        cy.get("body").tab().tab().tab().type("{enter}");
         
-        cy.contains(":visible", "sign in", {matchCase: false}).click();
-        
-        // using get to retry until element is visible
-        cy.get("input[placeholder*='username']").should("be.visible").first().type(USERNAME);
-
-        cy.contains(":visible", "create profile", {matchCase: false}).click();
+        // waiting for element to be visible
+        cy.wait(1000);
+        cy.get("body").tab().type(USERNAME);
+        cy.get("body").tab().tab().type("{enter}");
 
         cy.contains(":visible", USERNAME, {matchCase: false});
     });
 
     it("allows account deletion", () => {
-        cy.get("input:visible").first().type(EMAIL);
-        cy.get("input:visible").eq(1).type(PASSWORD);
+        cy.get("body").tab().type(EMAIL);
+        cy.get("body").tab().tab().type(PASSWORD);
+        cy.get("body").tab().tab().tab().type("{enter}");
         
-        cy.contains(":visible", "sign in", {matchCase: false}).click();
+        cy.wait(1000);
+        cy.get("body").tab().type("{enter}");
         
-        cy.get("label[for='settingsScreen']").should("be.visible").click();
-
+        cy.contains(":visible", "delete").should("have.attr", "tabindex");
         cy.contains(":visible", "delete").click();
 
+        cy.get("[onclick]").last().should("have.attr", "tabindex");
         cy.get("[onclick]").last().click();
     });
 
     it("account deletion is successful", () => {
-        cy.get("input:visible").first().type(EMAIL);
-        cy.get("input:visible").eq(1).type(PASSWORD);
-        
-        cy.contains(":visible", "sign in", {matchCase: false}).click();
+        cy.get("body").tab().type(EMAIL);
+        cy.get("body").tab().tab().type(PASSWORD);
+        cy.get("body").tab().tab().tab().type("{enter}");
         
         cy.get("input:visible").first().should("have.class", "fieldInvalid");
         cy.get("input:visible").eq(1).should("have.class", "fieldInvalid");
