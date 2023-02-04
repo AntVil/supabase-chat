@@ -62,5 +62,5 @@ async function signOut(){
 
 async function deleteAccount(){
     document.getElementById("signIn").checked = true;
-    await client.rpc("delete_user_serverrpc");
+    await client.from("profiles").delete().eq("user_id", user.id);
 }
