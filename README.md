@@ -28,7 +28,7 @@ Choose an E2E spec to run
 Under `./cypress/e2e` you can find the diffrent specs
 
 ### TODO
-- [ ] add account deletion
+- [x] add account deletion
 - [ ] test account deletion
 - [ ] test login fail
 - [ ] test message sendable

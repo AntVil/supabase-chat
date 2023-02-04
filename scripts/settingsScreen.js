@@ -59,3 +59,8 @@ async function signOut(){
     client.auth.signOut();
     user = undefined;
 }
+
+async function deleteAccount(){
+    document.getElementById("signIn").checked = true;
+    await client.rpc("delete_user_serverrpc");
+}

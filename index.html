@@ -99,6 +99,8 @@
                 <span></span>
                 <label for="chatScreen" tabindex="0">return to chat</label>
                 <label for="loginScreen" onclick="signOut()" tabindex="0">logout</label>
+                <span></span>
+                <label for="deleteAccount">delete account</label>
             </form>
 
             <input id="changeUsername" type="radio" name="settingsScreen" autocomplete="off" />
@@ -141,6 +143,13 @@
                 </select>
                 <span></span>
                 <button>ok</button>
+            </form>
+
+            <input id="deleteAccount" type="radio" name="settingsScreen" autocomplete="off" />
+            <form>
+                <h1>Delete Account</h1>
+                <label for="settingsHub" tabindex="0">cancel</label>
+                <label for="loginScreen" onclick="deleteAccount()" tabindex="0">confirm deletion</label>
             </form>
         </footer>
     </body>
