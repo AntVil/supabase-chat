@@ -16,7 +16,7 @@ async function signUp(e){
     let error;
     try{
         ({data, error} = await client.auth.signUp({
-            email: emailElement.value, 
+            email: emailElement.value,
             password: passwordElement.value
         }));
     }catch{
@@ -45,13 +45,13 @@ async function signIn(e){
     let error;
     try{
         ({data, error} = await client.auth.signInWithPassword({
-            email: emailElement.value, 
+            email: emailElement.value,
             password: passwordElement.value
         }));
     }catch{
         error = true;
     }
-    
+
     if(error === null || error === undefined || error === false){
         emailElement.classList.remove("fieldInvalid");
         passwordElement.classList.remove("fieldInvalid");
@@ -82,7 +82,7 @@ async function createProfile(e){
 
     let usernameElement = e.srcElement[0];
     let username = usernameElement.value.trim();
-    
+
     if(username.length === 0){
         usernameElement.classList.add("fieldInvalid");
         return;
