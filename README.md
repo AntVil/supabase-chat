@@ -22,7 +22,7 @@ npx cypress open --config watchForFileChanges=false
 Navigate to `E2E Testing`
 Choose a browser to test in
 Choose an E2E spec to run
-Under `./cypress/e2e` you can find the diffrent specs
+Under `./cypress/e2e` you can find the different specs
 
 ### TODO
 - [x] add account deletion
